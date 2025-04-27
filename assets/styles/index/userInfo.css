@@ -1,0 +1,167 @@
+#userInfo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    & div{
+        display: flex;
+        flex-flow: column wrap;
+        gap: 7px;
+        font-size: 1.4rem;
+        align-items: center;
+        background-color: #eee;
+        padding: 5px 15px 5px 5px;
+        border-radius: 20px;
+        overflow: hidden;
+        max-width: 30%;
+    }
+
+    & input{
+        max-width: 55%;
+        flex-grow: 1;
+        font-size: 1rem;
+    }
+    & label{
+        width: 45%;
+        font-size: 1.5rem;
+        text-align: left;
+    }
+    
+    & p{
+        text-wrap: wrap;
+        text-align: justify;
+        border-top: 1px solid black;
+        padding-top: 4px;
+    }
+
+    & ul{
+        list-style: none;
+        display: flex;
+        flex-flow: column wrap;
+        gap: 10px;
+    }
+
+    & li{
+        display: flex;
+        flex-flow: row wrap;
+
+    }
+    & footer{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    & button{
+        padding: 5px;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+        transition: all .4s ease-out;
+        min-width: 40%;
+        font-size: 1.4rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    & #sendUserInfo{
+        background-color: blue;
+        
+    }
+
+    & #cancelUserInfo{
+        background-color: red;
+
+    }
+}
+
+@media (max-width: 700px){
+    #userInfo{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(3px);
+    
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    
+        & div{
+            display: flex;
+            flex-flow: column wrap;
+            gap: 7px;
+    
+            align-items: center;
+            background-color: #eee;
+            padding: 5px 15px 5px 5px;
+            border-radius: 20px;
+            max-width: 85%;
+            overflow: hidden;
+        }
+    
+        & input{
+            max-width: 55%;
+            flex-grow: 1;
+        }
+        & label{
+            width: 45%;
+        }
+        
+        & p{
+            text-wrap: wrap;
+            text-align: justify;
+            border-top: 1px solid black;
+            padding-top: 4px;
+        }
+    
+        & ul{
+            list-style: none;
+            display: flex;
+            flex-flow: column wrap;
+            gap: 10px;
+        }
+    
+        & li{
+            display: flex;
+            flex-flow: row wrap;
+    
+        }
+        & footer{
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+        }
+    
+        & button{
+            padding: 5px;
+            border-radius: 20px;
+            /* font-size: 1rem; */
+            text-align: center;
+            color: white;
+            transition: all .4s ease-out;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        & #sendUserInfo{
+            background-color: blue;
+            
+        }
+    
+        & #cancelUserInfo{
+            background-color: red;
+    
+        }
+    }
+}

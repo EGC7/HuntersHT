@@ -1,6 +1,9 @@
 import {list} from './sectNumbers.js'
 import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { rifaInfos } from "../global/rifaInfo.js";
+import { verifyPayment } from './verifyPayment.js';
+import { getUserInfo } from './getUserInfo.js';
 
 const numbers = list.querySelectorAll("li");
 const button = document.querySelector("#pay");
@@ -36,13 +39,15 @@ button.addEventListener("click", () => {
     }
     
     if(document.body.contains(document.querySelector("#cnfButton"))){
-        document.querySelector("#cnfButton").addEventListener('click', confirm);    
+        document.querySelector("#cnfButton").addEventListener('click', getUserInfo);    
+    }
+    
+    if(document.body.contains(document.querySelector("#sendUserInfo"))){
+        document.querySelector("#sendUserInfo").addEventListener('click', confirm);    
     }
 })
 
 function nNumeros(num){
-    const qntNum = num.length;
-    
     if (infoCreated){
         cancel();
     }
@@ -119,44 +124,66 @@ function cancel(){
 }
 
 function getName(){
-    var input = document.querySelector("#nameInput");
+    var firstInput = document.querySelector("#firstNameInput");
+    var lastInput = document.querySelector("#lastNameInput");
 
-    const name = input.value;
+    var firstName = `${firstInput.value}`;
+    var lastName = `${lastInput.value}`;
+
+    if (!firstName || !lastName) {
+        alert("Preencha os dois campos!");
+        return;
+    } else if (firstName.length < 2 || lastName.length < 2){
+        alert("Preencha sua identificação de forma correta!");
+        return;
+    }
 
     const infos = {
-        "firstName": name.split(" ")[0],
-        "lastName": name.split(" ")[1]
+        "firstName": firstName,
+        "lastName": lastName
     }
     
     return infos;
+}
+
+function getUserContact(){
+    const contactInput = document.querySelector("#contactInput");
+
+    let contact = contactInput.value;
+    if (!contact || contact.length < 14){
+        alert("Preencha seu número para contato, por gentileza.");
+        return;
+    }
+    contact = `${contactInput.value}`;
+
+    return contact;
 }
 
 async function confirm(){
 
     const inputNumber = reservNumbers;
 
-    // const status = document.getElementById("status");
+    const paymentVerify = verifyPayment();
 
+    const rootName = rifaInfos.title;
     
     const name = getName();
 
-    const filename = `${name.firstName}_${name.lastName}`
-    // if (!numero || !nome) {
-    //     status.innerText = "Preencha os dois campos!";
-    //     return;
-    // }
+    const contact = getUserContact();
 
-    const docRef = doc(db, "rifa", filename);
+    const filename = `${name.firstName}_${name.lastName}`
+
+    const docRef = doc(db, rootName, filename);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-        // status.innerText = "Esse número já foi escolhido!";
-        alert("Nós verificamos que você já tem uma reserva, deseja substituir?");
+        alert("Nós verificamos que você já tem uma reserva. Sinto Muito");
     } else {
         await setDoc(docRef, {
         Usuario: name,
-        Pagamento: false,
+        Pagamento: paymentVerify,
         Reservas: inputNumber,
+        Contato: contact,
         timestamp: serverTimestamp()
         });
 
