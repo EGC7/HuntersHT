@@ -1,0 +1,98 @@
+#sectNumbers{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    max-width: 50%;
+    padding: 2px;
+    & ul{
+        list-style: none;
+        /* display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        gap: 10px;
+        padding: 0;
+        width: 100%; */
+        
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-width: 100%;
+        align-items: center;
+        justify-content: space-around;
+
+        & .number{
+            display: flex;
+            font-size: 1.4rem;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            padding: 4px;
+        }
+    }
+}
+
+.ClickedNum{
+    background-color: blue;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.noClickedNum{
+    background-color: black;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.preSelected{
+    & .selectedX{
+        position: absolute;
+        width: .4em;
+        height: 1.5em;
+        background-color: #e6270e;
+        border-radius: 30%;
+    }
+    & #selectX1{
+        rotate: 45deg;
+    }
+
+    & #selectX2{
+        rotate: -45deg;
+    }
+    
+    &:hover{
+        cursor: not-allowed;
+    }
+}
+
+@media (max-width: 700px) {
+    #sectNumbers{
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        border: 5px solid red;
+        max-width: 90%;
+        padding: 2px;
+        & ul{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 100%;
+            align-items: center;
+            justify-content: space-around;
+    
+            & .number{
+                display: flex;
+                font-size: 1.5rem;
+                color: white;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+                padding: 4px;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    display: flex;
+    flex-flow: column;
+    height: 100dvh;
+    /* overflow: hidden; */
+    background: whitesmoke;
+}
+
+.none{
+    display: none;
+}
+
+.button{
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+    color: white;
+    transition: all .4s ease-out;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 700px){
+    body{
+        display: flex;
+        flex-flow: column;
+        height: 100dvh;
+        overflow-x: hidden;
+        background: #fff;
+        align-items: center;
+    }
+}

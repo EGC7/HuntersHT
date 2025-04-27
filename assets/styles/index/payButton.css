@@ -1,0 +1,10 @@
+#pay{
+    background-color: #09dbb8;
+    margin-top: 15px;
+    max-width: 40%;
+
+    &:hover{
+        background-color: #00aa2b;
+    }
+}
+
