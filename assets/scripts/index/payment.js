@@ -3,7 +3,7 @@ import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { rifaInfos } from "../global/rifaInfo.js";
 import { verifyPayment } from './verifyPayment.js';
-import { getUserInfo } from './getUserInfo.js';
+import { getUserInfo, enableSendUserInfo } from './getUserInfo.js';
 
 const numbers = list.querySelectorAll("li");
 const button = document.querySelector("#pay");
@@ -39,11 +39,7 @@ button.addEventListener("click", () => {
     }
     
     if(document.body.contains(document.querySelector("#cnfButton"))){
-        document.querySelector("#cnfButton").addEventListener('click', getUserInfo);    
-    }
-    
-    if(document.body.contains(document.querySelector("#sendUserInfo"))){
-        document.querySelector("#sendUserInfo").addEventListener('click', confirm);    
+        document.querySelector("#cnfButton").addEventListener('click', () => {getUserInfo(); enableSendUserInfo(confirm);} );    
     }
 })
 
@@ -71,8 +67,8 @@ function nNumeros(num){
     
     infoNum.innerHTML = createMsg(num);
     
-    divButtons.appendChild(cnfButton);
     divButtons.appendChild(negButton);
+    divButtons.appendChild(cnfButton);
 
     sectInfo.appendChild(infoNum);
     sectInfo.appendChild(divButtons);
@@ -127,16 +123,18 @@ function getName(){
     var firstInput = document.querySelector("#firstNameInput");
     var lastInput = document.querySelector("#lastNameInput");
 
-    var firstName = `${firstInput.value}`;
-    var lastName = `${lastInput.value}`;
 
-    if (!firstName || !lastName) {
+    if (!firstInput.value || !lastInput.value) {
         alert("Preencha os dois campos!");
         return;
-    } else if (firstName.length < 2 || lastName.length < 2){
+    } else if (firstInput.value.length < 2 || lastInput.value.length < 2){
         alert("Preencha sua identificação de forma correta!");
         return;
     }
+
+    var firstName = `${firstInput.value}`;
+    var lastName = `${lastInput.value}`;
+
 
     const infos = {
         "firstName": firstName,
@@ -166,14 +164,17 @@ async function confirm(){
     const paymentVerify = verifyPayment();
 
     const rootName = rifaInfos.title;
-    
+
     const name = getName();
 
     const contact = getUserContact();
 
-    const filename = `${name.firstName}_${name.lastName}`
+    let filename = `${name.firstName}-${name.lastName}`
+
+    filename = filename.replace(/\s/g, '_')
 
     const docRef = doc(db, rootName, filename);
+
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {

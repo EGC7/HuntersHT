@@ -1,9 +1,18 @@
 import { enableContactMask } from './contactMask.js';
 
 function cancelGetUserInfo(){
-    document.querySelector('#cancelUserInfo').addEventListener('click', () => { 
-        document.querySelector("#userInfo").style.display = 'none';
-    });
+    
+    if(document.body.contains(document.querySelector("#cancelUserInfo"))){
+        document.querySelector("#cancelUserInfo").addEventListener('click', () => {
+            document.body.removeChild(document.querySelector("#userInfo"));
+        }
+        );
+    }
+}
+function enableSendUserInfo(func){
+    if(document.body.contains(document.querySelector("#sendUserInfo"))){
+        document.querySelector("#sendUserInfo").addEventListener('click', func);
+    }
 }
 
 function getUserInfo(){
@@ -60,8 +69,8 @@ function getUserInfo(){
     main.innerHTML = 'Estamos quase lá';
     p.innerHTML = 'Para finalizar o processo, nós precisamos de alguns dados: ';
 
-    footer.appendChild(btnConf);
     footer.appendChild(btnNeg);
+    footer.appendChild(btnConf);
 
     li1.appendChild(label1);
     li1.appendChild(input1);
@@ -88,4 +97,4 @@ function getUserInfo(){
     enableContactMask();
 }
 
-export { getUserInfo };
+export { getUserInfo, enableSendUserInfo};
