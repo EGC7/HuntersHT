@@ -4,6 +4,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/fi
 import { rifaInfos } from "../global/rifaInfo.js";
 import { verifyPayment } from './verifyPayment.js';
 import { getUserInfo, enableSendUserInfo} from './getUserInfo.js';
+import { getReservState } from '../global/getReservedNumbers.js';
 
 const numbers = list.querySelectorAll("li");
 const button = document.querySelector("#pay");
@@ -75,6 +76,7 @@ function nNumeros(num){
 
     sectionCentralMegaTop.appendChild(sectInfo);
     sectionCentralMegaTop.id = "confirmInfo";
+    sectionCentralMegaTop.classList.add("Sprite-Grafiti");
 
     if (!infoCreated){
         document.body.appendChild(sectionCentralMegaTop);
@@ -109,7 +111,7 @@ function createMsg(array){
 
         infoMsg+= `.`
     }
-    infoMsg+= `\nO valor total de pagamento é de R$${totVal}.\nQuer realizar o pagamento?`
+    infoMsg+= `\nO valor total é R$${totVal}.\nQuer realizar o pagamento?`
 
     infoMsg = infoMsg.replace(/\n/g, "<br>");
 
@@ -140,8 +142,8 @@ function getName(){
 
 
     const infos = {
-        "firstName": firstName,
-        "lastName": lastName
+        "firstName": firstName.trim(),
+        "lastName": lastName.trim()
     }
     
     return infos;
@@ -180,22 +182,33 @@ async function confirm(){
 
     const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-        alert("Nós verificamos que você já tem uma reserva. Sinto Muito");
-    } else {
-        await setDoc(docRef, {
-        Usuario: name,
-        Pagamento: paymentVerify,
-        Reservas: inputNumber,
-        Contato: contact,
-        timestamp: serverTimestamp()
-        });
+    let reservaFeita = false;
 
+    inputNumber.forEach(number => {
+        if (getReservState(number)){
+            alert("Nós verificamos que este número já está reservado. Tente outro");
+            reservaFeita = true;
+            location.reload();
+        } else if (docSnap.exists()){
+            alert("Este nome já está sendo utilizado. Tente substituir")
+            reservaFeita = true;
+        }
+    })
+
+    if (!reservaFeita){
+        await setDoc(docRef, {
+            Usuario: name,
+            Pagamento: paymentVerify,
+            Reservas: inputNumber,
+            Contato: contact,
+            timestamp: serverTimestamp()
+        });
+    
         // status.innerText = "Número reservado com sucesso!";
         // numeroInput.value = "";
         // nomeInput.value = "";
-
-        alert("Número reservado com sucesso!");
+    
+        alert("Sua reserva foi efetuada com sucesso. Agradecemos por ajudar a turma!!");
         inputNumber.value = "";
         name.value = "";
         location.reload();

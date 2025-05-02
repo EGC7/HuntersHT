@@ -16,28 +16,39 @@
         gap: 7px;
         font-size: 1.4rem;
         align-items: center;
-        background-color: #eee;
+        background-color: black;
         padding: 5px 15px 5px 5px;
+        color: white;
         border-radius: 20px;
         overflow: hidden;
         max-width: 30%;
     }
 
     & input{
-        max-width: 55%;
+        max-width: 100%;
         flex-grow: 1;
         font-size: 1rem;
-    }
-    & label{
-        width: 45%;
-        font-size: 1.5rem;
-        text-align: left;
+        border: 2px solid orange;
+        background: rgba(0, 0, 0, .3);
+        color: rgb(255, 255, 255);
+        transition: all .3s ease-out;
+        text-transform: capitalize;
+        /* font-family: 'Sprite Graffiti', sans-serif; */
+        &::placeholder{
+            font-family: 'Sprite Graffiti', sans-serif;
+            color: rgb(248, 248, 248);
+        }
+        
+        &:focus{
+            outline: none;
+            border: 2px solid lime;
+        }
     }
     
     & p{
         text-wrap: wrap;
         text-align: justify;
-        border-top: 1px solid black;
+        border-top: 1px solid white;
         padding-top: 4px;
     }
 
@@ -46,6 +57,7 @@
         display: flex;
         flex-flow: column wrap;
         gap: 10px;
+        width: 100%;
     }
 
     & li{
@@ -66,7 +78,7 @@
         border-radius: 20px;
         text-align: center;
         color: white;
-        transition: all .4s ease-out;
+        transition: all .2s ease-out;
         min-width: 40%;
         font-size: 1.4rem;
         &:hover{
@@ -74,12 +86,19 @@
         }
     }
     & #sendUserInfo{
-        background-color: blue;
+        background-color: rgb(102, 255, 0);
         
+        &:hover{
+            background-color: rgb(62, 155, 0);
+        }
     }
 
     & #cancelUserInfo{
-        background-color: red;
+        background-color: rgb(255, 106, 106);
+
+        &:hover{
+            background-color: rgb(155, 0, 0);
+        }
 
     }
 }
@@ -89,7 +108,6 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(3px);
     
         display: flex;
         flex-flow: column wrap;
@@ -102,25 +120,15 @@
             gap: 7px;
     
             align-items: center;
-            background-color: #eee;
             padding: 5px 15px 5px 5px;
             border-radius: 20px;
             max-width: 85%;
             overflow: hidden;
         }
-    
-        & input{
-            max-width: 55%;
-            flex-grow: 1;
-        }
-        & label{
-            width: 45%;
-        }
         
         & p{
             text-wrap: wrap;
             text-align: justify;
-            border-top: 1px solid black;
             padding-top: 4px;
         }
     
@@ -147,22 +155,10 @@
         & button{
             padding: 5px;
             border-radius: 20px;
-            /* font-size: 1rem; */
             text-align: center;
-            color: white;
-            transition: all .4s ease-out;
             &:hover{
                 cursor: pointer;
             }
-        }
-        & #sendUserInfo{
-            background-color: blue;
-            
-        }
-    
-        & #cancelUserInfo{
-            background-color: red;
-    
         }
     }
 }
