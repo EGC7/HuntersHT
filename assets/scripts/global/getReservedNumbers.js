@@ -15,4 +15,12 @@ rifaData.forEach(doc => {
     })
 })
 
-export {reserveds}
+function getReservState(reserv){
+    if (reserveds.includes(reserv)){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+export {reserveds, getReservState}

@@ -13,6 +13,7 @@ for (let num=0; num<totalNumbers; num++){
     number.innerHTML = num < 9 ? `0${num+1}` : `${num+1}`; 
     
     number.classList.add("number");
+    number.classList.add("Sprite-Grafiti")
     number.classList.add("noClickedNum");
 
     x1.id = "selectX1";
@@ -25,6 +26,7 @@ for (let num=0; num<totalNumbers; num++){
     number.appendChild(x2)
     list.appendChild(number)
 }
+
 list.querySelectorAll("li").forEach(li => {
     if (reserveds.includes(parseInt(li.innerHTML))){
         li.classList.remove("noClickedNum");

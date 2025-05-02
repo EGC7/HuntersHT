@@ -3,18 +3,17 @@ import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { rifaInfos } from "../global/rifaInfo.js";
 import { verifyPayment } from './verifyPayment.js';
-import { getUserInfo, enableSendUserInfo } from './getUserInfo.js';
+import { getUserInfo, enableSendUserInfo} from './getUserInfo.js';
 
 const numbers = list.querySelectorAll("li");
 const button = document.querySelector("#pay");
-const constPayment = 15.0;
+const constPayment = rifaInfos.value;
 
 let infoCreated = false;
 
 let reservNumbers = [];
 
 button.addEventListener("click", () => {
-
     reservNumbers.length = 0; //esvaziar antes de inicar a nova contagem
     numbers.forEach(num => {
         if (num.classList.contains("ClickedNum")){
@@ -27,6 +26,7 @@ button.addEventListener("click", () => {
         }
     })
     
+
     if (reservNumbers.length > 0){
         nNumeros(reservNumbers)
         button.classList.add('none');
@@ -47,9 +47,9 @@ function nNumeros(num){
     if (infoCreated){
         cancel();
     }
-
+    var sectionCentralMegaTop = document.createElement("section")
     var sectInfo = document.createElement("section");
-    var infoNum = document.createElement("pre");
+    var infoNum = document.createElement("p");
     var divButtons = document.createElement("div");
     var cnfButton = document.createElement("button");
     var negButton = document.createElement("button");
@@ -73,8 +73,11 @@ function nNumeros(num){
     sectInfo.appendChild(infoNum);
     sectInfo.appendChild(divButtons);
 
+    sectionCentralMegaTop.appendChild(sectInfo);
+    sectionCentralMegaTop.id = "confirmInfo";
+
     if (!infoCreated){
-        document.body.appendChild(sectInfo);
+        document.body.appendChild(sectionCentralMegaTop);
         infoCreated = true;
     }
 
@@ -108,13 +111,13 @@ function createMsg(array){
     }
     infoMsg+= `\nO valor total de pagamento é de R$${totVal}.\nQuer realizar o pagamento?`
 
-    infoMsg.replace(/\n/g, "<br>");
+    infoMsg = infoMsg.replace(/\n/g, "<br>");
 
     return infoMsg;
 }
 
 function cancel(){
-    document.body.removeChild(document.querySelector("#sectInfo"));
+    document.body.removeChild(document.querySelector("#confirmInfo"));
     infoCreated = false;
     button.classList.remove('none');
 }
@@ -195,6 +198,7 @@ async function confirm(){
         alert("Número reservado com sucesso!");
         inputNumber.value = "";
         name.value = "";
+        location.reload();
     }
 
 }

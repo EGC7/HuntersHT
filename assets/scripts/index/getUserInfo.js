@@ -16,6 +16,7 @@ function enableSendUserInfo(func){
 }
 
 function getUserInfo(){
+    
     const userInfo = document.createElement("section");
     const firstDiv = document.createElement("div");
     const main = document.createElement("main");
