@@ -187,7 +187,7 @@ async function confirm(){
     inputNumber.forEach(number => {
         if (getReservState(number)){
             alert("Nós verificamos que este número já está reservado. Tente outro");
-            reservaFeita = true;
+            reservaFeita = true
             location.reload();
         } else if (docSnap.exists()){
             alert("Este nome já está sendo utilizado. Tente substituir")
