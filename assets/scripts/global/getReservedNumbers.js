@@ -3,7 +3,7 @@ import { getDocs, collection, query, where} from "https://www.gstatic.com/fireba
 import { rifaInfos } from "./rifaInfo.js";
 
 const rootName = rifaInfos.title;
-const qry = query(collection(db, rootName), where("Pagamento", "==", false)); //troca pra 'payment' e 'true' dpsss
+const qry = query(collection(db, rootName), where("Pagamento", "==", true)); //troca pra 'payment' e 'true' dpsss
 
 const rifaData = await getDocs(qry);
 

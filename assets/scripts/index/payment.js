@@ -2,7 +2,7 @@ import {list} from './sectNumbers.js'
 import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { rifaInfos } from "../global/rifaInfo.js";
-import { verifyPayment } from './verifyPayment.js';
+import { gerarPix, linkPayment } from './verifyPayment.js';
 import { getUserInfo, enableSendUserInfo} from './getUserInfo.js';
 import { getReservState } from '../global/getReservedNumbers.js';
 
@@ -207,7 +207,9 @@ async function confirm(){
         // status.innerText = "Número reservado com sucesso!";
         // numeroInput.value = "";
         // nomeInput.value = "";
-    
+        
+        await gerarPix(parseFloat(inputNumber.length.toFixed(2)));
+
         alert("Sua reserva foi efetuada com sucesso. Agradecemos por ajudar a turma!!");
         inputNumber.value = "";
         name.value = "";

@@ -3,9 +3,10 @@ import { rifaInfos } from "../global/rifaInfo.js";
 
 const sect = document.querySelector("#sectNumbers");
 const totalNumbers = rifaInfos.totNum;
+const numberInitial = rifaInfos.initNum;
 const list = sect.querySelector("ul");
 
-for (let num=0; num<totalNumbers; num++){
+for (let num=(numberInitial-1); num<totalNumbers; num++){
     var number = document.createElement("li");
     var x1 = document.createElement("div");
     var x2 = document.createElement("div");
