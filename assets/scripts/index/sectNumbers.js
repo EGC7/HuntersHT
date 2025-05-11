@@ -1,10 +1,12 @@
-import { reserveds } from "../global/getReservedNumbers.js";
+import { getReservedNumbers } from "../global/getReservedNumbers.js";
 import { rifaInfos } from "../global/rifaInfo.js";
 
 const sect = document.querySelector("#sectNumbers");
 const totalNumbers = rifaInfos.totNum;
 const numberInitial = rifaInfos.initNum;
 const list = sect.querySelector("ul");
+
+const reserveds = await getReservedNumbers();
 
 for (let num=(numberInitial-1); num<totalNumbers; num++){
     var number = document.createElement("li");
@@ -25,15 +27,15 @@ for (let num=(numberInitial-1); num<totalNumbers; num++){
     
     number.appendChild(x1)
     number.appendChild(x2)
-    list.appendChild(number)
+    
+    list.appendChild(number);
 }
 
 list.querySelectorAll("li").forEach(li => {
     if (reserveds.includes(parseInt(li.innerHTML))){
         li.classList.remove("noClickedNum");
         li.classList.add("preSelected");
-        // li.style.pointerEvents = 'none';
     }
-}) // EU NÃO SEI PQ NÃO FUNCIONA NO MEU CELULAR, MAS ESPERO QUE ESTEJA NORMAL NO DOS OUTROS >:(
+})
 
 export { list }

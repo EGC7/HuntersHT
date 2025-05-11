@@ -166,8 +166,6 @@ async function confirm(){
 
     const inputNumber = reservNumbers;
 
-    const paymentVerify = verifyPayment();
-
     const rootName = rifaInfos.title;
 
     const name = getName();
@@ -198,7 +196,7 @@ async function confirm(){
     if (!reservaFeita){
         await setDoc(docRef, {
             Usuario: name,
-            Pagamento: paymentVerify,
+            Pagamento: true,
             Reservas: inputNumber,
             Contato: contact,
             timestamp: serverTimestamp()
@@ -208,7 +206,7 @@ async function confirm(){
         // numeroInput.value = "";
         // nomeInput.value = "";
         
-        await gerarPix(inputNumber.length, filename);
+        // await gerarPix(inputNumber.length, filename);
 
         alert("Sua reserva foi efetuada com sucesso. Agradecemos por ajudar a turma!!");
         inputNumber.value = "";
