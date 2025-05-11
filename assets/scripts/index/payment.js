@@ -1,4 +1,4 @@
-import {list} from './sectNumbers.js'
+import { createNumberList } from './sectNumbers.js'
 import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { rifaInfos } from "../global/rifaInfo.js";
@@ -6,7 +6,8 @@ import { gerarPix } from './verifyPayment.js';
 import { getUserInfo, enableSendUserInfo} from './getUserInfo.js';
 import { getReservState } from '../global/getReservedNumbers.js';
 
-const numbers = list.querySelectorAll("li");
+const numbers = await createNumberList();
+
 const button = document.querySelector("#pay");
 const constPayment = rifaInfos.value;
 
@@ -91,7 +92,7 @@ function createMsg(array){
 
     let infoMsg = ``;
     
-    const totVal = qtd * constPayment;
+    const totVal = (qtd * constPayment).toFixed(2);
     
     if (qtd == 1){
         infoMsg = `O número selecionado foi: ${array}`
@@ -111,7 +112,7 @@ function createMsg(array){
 
         infoMsg+= `.`
     }
-    infoMsg+= `\nO valor total é R$${totVal}.\nQuer realizar o pagamento?`
+    infoMsg+= `\nO valor total é R$${totVal} \nQuer realizar o pagamento?`
 
     infoMsg = infoMsg.replace(/\n/g, "<br>");
 
