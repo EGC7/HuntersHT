@@ -1,58 +1,70 @@
-import { rifaInfos } from '../global/rifaInfo';
-const { QrCodePix } = require('qrcode-pix');
+import { rifaInfos } from '../global/rifaInfo.js';
 
-async function gerarPix(total) {
-    const qrCode = QrCodePix({
-      version: '01',
-      key: 'hunters3ht@gmail.com',
-      name: 'Fulaninho',
-      city: 'Belém',
-      transactionId: 'RIFA001',
-      message: 'Pagamento da Rifa',
-      value: total
+async function gerarPix(qtd, user) {
+    const resposta = await fetch('/url-da-sua-http-function', {
+      method: 'POST',
+      body: JSON.stringify({
+        key: "91996410818",
+        name: user,
+        city: "Belém",
+        transactionId: "TX000",
+        message: "Pagamento da Rifa",
+        value: parseFloat((rifaInfos.value * qtd).toFixed(2)),
+      }),
+      headers: { 'Content-Type': 'application/json' }
     });
   
-    // console.log('Copia e Cola Pix:', qrCode.payload());
-  
-    const imgBase64 = await qrCode.base64();
-    // console.log('Imagem (base64):', imgBase64);
+    const { payload, base64 } = await resposta.json();
+    linkPayment(payload, base64)
+  }
 
-    // linkPayment()
-}
+async function linkPayment(copiaEcola, dataImage){
+    return new Promise((resolve) => {
+        var blurSection = document.createElement("section");
+        var paymentPix = document.createElement("section");
 
-async function linkPayment(){
-    while (true) {
-        var qrCodeCenter = document.createElement("section")
-        var sectInfo = document.createElement("section");
-        var infoNum = document.createElement("p");
-        var divButtons = document.createElement("div");
-        var cnfButton = document.createElement("button");
-        var negButton = document.createElement("button");
+        var pixLink = document.createElement("input");
+        var qrCodeCenter = document.createElement("div");
+        var titleMsg = document.createElement("main");
+        var copyButton = document.createElement("button");
 
-        cnfButton.innerHTML = "Confirmar";
-        negButton.innerHTML = "Cancelar";
-
-        cnfButton.classList.add("button");
-        negButton.classList.add("button");
-
-        cnfButton.id = "cnfButton";
-        negButton.id = "negButton";
-        infoNum.id = "infoNum";
-        sectInfo.id = "sectInfo";
+        titleMsg.innerHTML = "Aponte para o QR code, ou copie o link e efetue o pagamento para garantir a sua reserva.";
         
-        infoNum.innerHTML = createMsg(num);
+        copyButton.innerHTML = "Pix Copia e Cola";
+    
+        copyButton.classList.add("button");
+        titleMsg.classList.add("Sprite-Grafiti");
+
+        copyButton.id = "copyButton";
+        paymentPix.id = "pixSection";
+        blurSection.id = "blurSection";
+
+        pixLink.setAttribute('type', 'text');
+        pixLink.readOnly = true;
+
+        pixLink.value = `${copiaEcola}`
+
+        paymentPix.appendChild(titleMsg);
+        paymentPix.appendChild(qrCodeCenter);
+        paymentPix.appendChild(pixLink);
+        paymentPix.appendChild(copyButton);
         
-        divButtons.appendChild(negButton);
-        divButtons.appendChild(cnfButton);
+        qrCodeCenter.style.backgroundImage = `url('${dataImage}')`;
 
-        sectInfo.appendChild(infoNum);
-        sectInfo.appendChild(divButtons);
+        blurSection.appendChild(paymentPix);
+        document.body.appendChild(blurSection);
 
-        sectionCentralMegaTop.appendChild(sectInfo);
-        sectionCentralMegaTop.id = "confirmInfo";
-        sectionCentralMegaTop.classList.add("Sprite-Grafiti");
-        return;
-    }
+        copyButton.addEventListener('click', () => {
+            pixLink.select();
+            pixLink.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(pixLink.value)
+            
+            alert('Código Pix copiado!');
+
+            resolve();
+        }, { once: true });
+    })
 }
 
 export { gerarPix }
