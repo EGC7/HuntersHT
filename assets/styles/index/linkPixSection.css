@@ -15,17 +15,19 @@
         flex-flow: column wrap;
         justify-content: center;
         align-items: center;
-        gap: 15px;
+        gap: 10px;
 
         padding: 5px;
         background-color: #333;
         border-radius: 13px;
         width: 40%;
-        height: 65%;
+        height: 90%;
 
         & div{
-            width: 55%;
-            height: 55%;
+            width: 45%;
+            height: 45%;
+            
+            /* background-image: url('../../images/qrcode-pix.png'); */
             
             background-repeat: no-repeat;
             background-position: center;
@@ -33,15 +35,26 @@
 
         }
         
-        & button{
+        & #copyButton{
+            width: 30%;
+            height: 5%;
+            font-size: 1rem;
             background-color: #666;
 
             &:hover{
-                background-color: #111;
+                background-color: #444;
             }
         }
         
-        & main{
+        & #finallyButton{
+            background-color: #bb7c1d;
+
+            &:hover{
+                background-color: #834e00;
+            }
+        }
+        
+        & meta, main, p{
             display: flex;
             
             text-align: center;
@@ -54,10 +67,33 @@
             border: 2px solid rgba(43, 255, 0, 0.452);
             border-radius: 13px;
             padding: 3px;
+            text-align: center;
 
             &:hover, &:focus{
                 cursor: inherit;
                 outline: none;
+            }
+        }
+    }
+}
+
+@media (max-width:700px){
+    #blurSection{
+        & #pixSection{
+            gap: 8px;
+
+            width: 90%;
+            height: 95%;
+    
+            & div{
+                width: 35%;
+                height: 35%;
+            }
+            
+            & #copyButton{
+                width: 50%;
+                height: 5%;
+                font-size: 1rem;
             }
         }
     }

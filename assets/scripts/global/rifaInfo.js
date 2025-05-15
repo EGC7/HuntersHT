@@ -1,8 +1,8 @@
 const rifaInfos = {
-    title: "Rifa_Tralalero_Tralala",
+    title: "Rifa de Maio",
     value: 3.0,
-    totNum: 55,
-    initNum: 1
+    totNum: 66,
+    initNum: 45
 }
 
 export { rifaInfos }

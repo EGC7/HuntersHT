@@ -2,7 +2,8 @@ import { createNumberList } from './sectNumbers.js'
 import { db } from '../global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { rifaInfos } from "../global/rifaInfo.js";
-import { gerarPix } from './verifyPayment.js';
+// import { gerarPix } from './verifyPayment.js';
+import { gerarPix } from './verifyPayment2.js';
 import { getUserInfo, enableSendUserInfo} from './getUserInfo.js';
 import { getReservState } from '../global/getReservedNumbers.js';
 
@@ -194,10 +195,13 @@ async function confirm(){
         }
     })
 
+
+    await gerarPix(inputNumber.length, "(91) 99144-6037");
+    
     if (!reservaFeita){
         await setDoc(docRef, {
             Usuario: name,
-            Pagamento: true,
+            Pagamento: false,
             Reservas: inputNumber,
             Contato: contact,
             timestamp: serverTimestamp()
@@ -209,7 +213,7 @@ async function confirm(){
         
         // await gerarPix(inputNumber.length, filename);
 
-        alert("Sua reserva foi efetuada com sucesso. Agradecemos por ajudar a turma!!");
+        alert("Assim que recebermos o comprovante - no contato (91) 991446037 -, sua reserva será efetuada! Desde já Agradecemos por ajudar a turma!!");
         inputNumber.value = "";
         name.value = "";
         location.reload();
