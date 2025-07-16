@@ -6,9 +6,13 @@ async function createPaymentDiv() {
     const copyText = document.createElement('main');
     const copyButton = document.createElement('button');
     const sendButton = document.createElement('button');
+    const cancelButton = document.createElement('button');
 
     sendButton.id = 'sendButton';
     sendButton.innerHTML = 'Já fiz o pagamento';
+
+    cancelButton.id = 'cancelButton';
+    cancelButton.innerHTML = 'Cancelar o pagamento';
     // sendButton.classList.add('Sprite-Grafiti');
     
     title.innerHTML = 'Efetue o Pagamento com o QrCode abaixo';
@@ -26,6 +30,8 @@ async function createPaymentDiv() {
     paymentDiv.appendChild(copyText);
     paymentDiv.appendChild(copyButton);
     paymentDiv.appendChild(sendButton);
+    paymentDiv.appendChild(cancelButton);
+
     document.body.appendChild(paymentDiv);
 
 }

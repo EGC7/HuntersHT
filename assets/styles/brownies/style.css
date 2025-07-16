@@ -4,6 +4,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 30px;
+    height: auto;
 }
 
 h1{
@@ -23,7 +24,7 @@ form{
     min-height: 60%;
     min-width: 50%;
 
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     color: white;
 
 
@@ -189,6 +190,26 @@ form{
 
     & #sendButton:focus, #sendButton:hover{
         background-color: rgb(224, 0, 0);
+        cursor: pointer;
+    }
+
+    & #cancelButton{
+        width: 50%;
+        background-color: rgb(221, 35, 2);
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        border-radius: 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        transition: all .2s ease-out;
+    }
+
+    & #cancelButton:focus, #cancelButton:hover{
+        background-color: rgb(0, 0, 0);
         cursor: pointer;
     }
 }

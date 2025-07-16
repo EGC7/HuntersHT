@@ -5,20 +5,6 @@ import { createPaymentDiv } from "./browniePayment.js";
 
 const browniesSabores = await getFlavors();
 
-function setFlavorsOnSelect(){
-    const selectFlavors = document.querySelector('#flavors');
-    
-    browniesSabores.forEach(flavor => {
-        let option = document.createElement('option');
-        option.classList.add('optionFlavor');
-        
-        option.innerHTML = `${flavor}`;
-
-        selectFlavors.appendChild(option);
-
-    });
-}
-
 function showFlavorOnHTML(){
     const rootForm = document.querySelector('form');
     
@@ -53,12 +39,10 @@ function showFlavorOnHTML(){
         label.appendChild(qtd);
         
         rootForm.insertBefore(label, document.querySelector('button'));
-        console.log('created')
 
     });
 }
 
-// // setFlavorsOnSelect();
 
 showFlavorOnHTML();
 
@@ -215,7 +199,11 @@ button.addEventListener("click", (event) => {
             } catch(e){
                 console.error(e);
             }
-        })
+        });
+        document.querySelector('#cancelButton').addEventListener('click', () => {
+            document.querySelector('#paymentDiv').remove();
+            setTimeout(() => {}, 700);
+        });
     } else{ return}
     
 })
