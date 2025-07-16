@@ -128,13 +128,12 @@ form{
         width: 55%;
         height: 55%;
         display: flex;
-        /* align-self: center; */
         background-image: url('../../images/qrcode-pix.png');
         
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        margin-bottom: -50px;
+        margin-bottom: -20px;
     }
 
     & p{
