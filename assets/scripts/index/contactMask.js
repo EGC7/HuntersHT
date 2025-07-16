@@ -1,5 +1,5 @@
 function enableContactMask(){
-  const contactInput = document.querySelector("#contactInput");
+  const contactInput = document.querySelector(".contactInput");
 
   contactInput.addEventListener('input', (e) => {
       let value = e.target.value;

@@ -40,7 +40,7 @@ function getUserInfo(){
     userInfo.id = "userInfo";
     input1.id = 'firstNameInput';
     input2.id = 'lastNameInput';
-    input3.id = 'contactInput';
+    input3.classList.add('contactInput');
     btnConf.id = "sendUserInfo";
     btnNeg.id = "cancelUserInfo";
 
@@ -53,7 +53,6 @@ function getUserInfo(){
     input2.setAttribute('autocomplete', 'off');
 
     input3.setAttribute('type', 'tel');
-    // input3.setAttribute('placeholder', '(00) 00000-0000');
     input3.setAttribute('placeholder', 'WhatsApp com DDD');
     input3.setAttribute('pattern', '^\(\d{2}\)\s\d{4,5}-\d{4}$');
     input3.setAttribute('autocomplete', 'off');

@@ -201,7 +201,7 @@ async function confirm(){
     if (!reservaFeita){
         await setDoc(docRef, {
             Usuario: name,
-            Pagamento: false,
+            Pagamento: true,
             Reservas: inputNumber,
             Contato: contact,
             timestamp: serverTimestamp()
