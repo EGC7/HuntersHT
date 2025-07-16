@@ -15,6 +15,16 @@ function showFlavorOnHTML(){
         const check = document.createElement('input');
         const qtd = document.createElement('input');
     
+        qtd.addEventListener("input", () => {
+            
+            const max = parseInt(qtd.max);
+            const min = parseInt(qtd.min);
+            const val = parseInt(qtd.value);
+        
+            if (val > max) qtd.value = max;
+            if (val < min) qtd.value = min;
+        });
+
         label.classList.add('Sprite-Grafiti');
         label.classList.add('labelSabor');
         label.setAttribute('for', `check-${flavor}`);
@@ -28,7 +38,8 @@ function showFlavorOnHTML(){
         qtd.setAttribute('type', 'number');
         qtd.setAttribute('min', 0);
         qtd.setAttribute('max', 10);
-        qtd.setAttribute('value', 0);
+        qtd.setAttribute('inputmode', 'numeric');
+        qtd.setAttribute('placeholder', '1-10');
         qtd.readOnly = true;
 
         
