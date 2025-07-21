@@ -1,11 +1,11 @@
-import { createNumberList } from '/public/assets/scripts/index/sectNumbers.js'
-import { db } from '/public/assets/scripts/global/firebaseConfig.js';
+import { createNumberList } from '/assets/scripts/index/sectNumbers.js'
+import { db } from '/assets/scripts/global/firebaseConfig.js';
 import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { rifaInfos } from "/public/assets/scripts/global/rifaInfo.js";
+import { rifaInfos } from "/assets/scripts/global/rifaInfo.js";
 // import { gerarPix } from './verifyPayment.js';
-import { gerarPix } from '/public/assets/scripts/index/verifyPayment2.js';
-import { getUserInfo, enableSendUserInfo} from '/public/assets/scripts/index/getUserInfo.js';
-import { getReservState } from '/public/assets/scripts/global/getReservedNumbers.js';
+import { gerarPix } from '/assets/scripts/index/verifyPayment2.js';
+import { getUserInfo, enableSendUserInfo} from '/assets/scripts/index/getUserInfo.js';
+import { getReservState } from '/assets/scripts/global/getReservedNumbers.js';
 
 const numbers = await createNumberList();
 

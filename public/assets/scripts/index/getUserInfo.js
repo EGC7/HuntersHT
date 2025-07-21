@@ -1,4 +1,4 @@
-import { enableContactMask } from '/public/assets/scripts/index/contactMask.js';
+import { enableContactMask } from '/assets/scripts/index/contactMask.js';
 
 function cancelGetUserInfo(){
     

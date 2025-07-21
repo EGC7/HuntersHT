@@ -1,4 +1,4 @@
-@import url("/public/assets/styles/global/global.css");
+@import url("/assets/styles/global/global.css");
 
 body{
     justify-content: center;
@@ -130,7 +130,7 @@ form{
         width: 55%;
         height: 55%;
         display: flex;
-        background-image: url('/public/assets/images/qrcode-pix.png');
+        background-image: url('/assets/images/qrcode-pix.png');
         
         background-repeat: no-repeat;
         background-position: center;

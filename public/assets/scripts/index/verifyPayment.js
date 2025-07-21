@@ -1,4 +1,4 @@
-import { rifaInfos } from '/public/assets/scripts/global/rifaInfo.js';
+import { rifaInfos } from '/assets/scripts/global/rifaInfo.js';
 
 async function gerarPix(qtd, user) {
     const resposta = await fetch('/url-da-sua-http-function', {

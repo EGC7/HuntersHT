@@ -1,8 +1,8 @@
-import { rifaInfos } from '/public/assets/scripts/global/rifaInfo.js';
+import { rifaInfos } from '/assets/scripts/global/rifaInfo.js';
 
 async function gerarPix(qtd, myNum) {
     const payload = "hunters3ht@gmail.com";
-    const dataImage = "/public/assets/images/qrcode-pix.png";
+    const dataImage = "/assets/images/qrcode-pix.png";
     await linkPayment(payload, dataImage, qtd, myNum);
   }
 

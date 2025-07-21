@@ -1,5 +1,5 @@
-import { getReservedNumbers, getReservState } from "/public/assets/scripts/global/getReservedNumbers.js";
-import { rifaInfos } from "/public/assets/scripts/global/rifaInfo.js";
+import { getReservedNumbers, getReservState } from "/assets/scripts/global/getReservedNumbers.js";
+import { rifaInfos } from "/assets/scripts/global/rifaInfo.js";
 
 
 async function createNumberList() {
