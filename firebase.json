@@ -29,7 +29,7 @@
       },
       {
         "source": "/rifa",
-        "destination": "index/html"
+        "destination": "/index/html"
       }
     ],
     "cleanUrls": false
