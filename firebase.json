@@ -24,8 +24,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "brownies",
         "destination": "/assets/pages/brownies.html"
+      },
+      {
+        "source": "rifa",
+        "destination": "index/html"
       }
     ],
     "cleanUrls": false
