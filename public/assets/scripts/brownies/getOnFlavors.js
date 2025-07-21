@@ -1,6 +1,6 @@
-import { db } from '../global/firebaseConfig.js';
+import { db } from '/public/assets/scripts/global/firebaseConfig.js';
 import { getDocs, collection, query, where} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { browniesInfos } from './browniesInfo.js';
+import { browniesInfos } from '/public/assets/scripts/brownies/browniesInfo.js';
 
 const onFlavors = [];
 

@@ -1,7 +1,7 @@
-import { enableContactMask } from "../index/contactMask.js";
-import { getFlavors } from "./getOnFlavors.js";
-import { sendMessage } from "./sendWhatsappMessage.js";
-import { createPaymentDiv } from "./browniePayment.js";
+import { enableContactMask } from "/public/assets/scripts/index/contactMask.js";
+import { getFlavors } from "/public/assets/scripts/brownies/getOnFlavors.js";
+import { sendMessage } from "/public/assets/scripts/brownies/sendWhatsappMessage.js";
+import { createPaymentDiv } from "/public/assets/scripts/brownies/browniePayment.js";
 
 const browniesSabores = await getFlavors();
 

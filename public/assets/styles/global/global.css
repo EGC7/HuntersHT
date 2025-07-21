@@ -16,7 +16,7 @@ body{
     align-items: center;
     
     background-color: black;
-    background-image: url('../../images/Fundo_HT.png');
+    background-image: url('/public/assets/images/Fundo_HT.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

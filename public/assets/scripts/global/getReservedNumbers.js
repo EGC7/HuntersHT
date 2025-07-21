@@ -1,6 +1,6 @@
-import { db } from './firebaseConfig.js';
+import { db } from '/public/assets/scripts/global/firebaseConfig.js';
 import { getDocs, collection, query, where} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { rifaInfos } from "./rifaInfo.js";
+import { rifaInfos } from "/public/assets/scripts/global/rifaInfo.js";
 
 const reserveds = [];
 
