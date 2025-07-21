@@ -24,11 +24,11 @@
     ],
     "rewrites": [
       {
-        "source": "brownies",
+        "source": "/brownies",
         "destination": "/assets/pages/brownies.html"
       },
       {
-        "source": "rifa",
+        "source": "/rifa",
         "destination": "index/html"
       }
     ],
