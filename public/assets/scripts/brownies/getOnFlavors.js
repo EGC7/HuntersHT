@@ -2,9 +2,9 @@ import { db } from '/assets/scripts/global/firebaseConfig.js';
 import { getDocs, collection, query, where} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { browniesInfos } from '/assets/scripts/brownies/browniesInfo.js';
 
-const onFlavors = [];
+const onBrownies = [];
 
-async function getFlavors(state=true) {
+async function getOnBrownies(state=true) {
 
     const rootName = browniesInfos.title;
 
@@ -14,11 +14,11 @@ async function getFlavors(state=true) {
     
     brownieData.forEach(doc => {
         if (doc.data().onBasement){
-            onFlavors.push(doc.id)
+            onBrownies.push([doc.id, doc.data().onQuanties])
         }
     })
     
-    return onFlavors;
+    return onBrownies;
 }
 
-export { getFlavors }
+export { getOnBrownies }

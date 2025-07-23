@@ -1,20 +1,23 @@
 import { enableContactMask } from "/assets/scripts/index/contactMask.js";
-import { getFlavors } from "/assets/scripts/brownies/getOnFlavors.js";
+import { getOnBrownies } from "/assets/scripts/brownies/getOnFlavors.js";
 import { sendMessage } from "/assets/scripts/brownies/sendWhatsappMessage.js";
 import { createPaymentDiv } from "/assets/scripts/brownies/browniePayment.js";
 
-const browniesSabores = await getFlavors();
+const onBrownies = await getOnBrownies();
+const browniesSabores = onBrownies[0];
 
 function showFlavorOnHTML(){
     const rootForm = document.querySelector('form');
     
-    browniesSabores.forEach(flavor => {
+    onBrownies.forEach(brownie => {
     
         const label = document.createElement('label');
         const p = document.createElement('p');
         const check = document.createElement('input');
         const qtd = document.createElement('input');
-    
+        const flavor = brownie[0];
+        const quantie = brownie[1];
+
         qtd.addEventListener("input", () => {
             
             const max = parseInt(qtd.max);
@@ -37,9 +40,9 @@ function showFlavorOnHTML(){
         qtd.classList.add('quantidade');
         qtd.setAttribute('type', 'number');
         qtd.setAttribute('min', 0);
-        qtd.setAttribute('max', 10);
+        qtd.setAttribute('max', quantie);
         qtd.setAttribute('inputmode', 'numeric');
-        qtd.setAttribute('placeholder', '1-10');
+        qtd.setAttribute('placeholder', `1-${quantie}`);
         qtd.readOnly = true;
 
         
@@ -61,6 +64,7 @@ enableContactMask();
 
 const button = document.querySelector("button");
 const brownieInputs = document.querySelectorAll(".check");
+const brownieLabels = document.querySelectorAll(".labelSabor");
 const qtds = document.querySelectorAll(".quantidade");
 var checkedList = [];
 
@@ -72,12 +76,25 @@ let user = {
     brownies: []
 };
 
-brownieInputs.forEach((brownie, index) => {
-    brownie.addEventListener('change', () => {
-        checkedList[index] = brownie.checked;
+brownieLabels.forEach((label) => {
+    const checkBox = label.querySelector('.check');
+    const quantiBox = label.querySelector('.quantidade');
+    checkBox.addEventListener('change', () => {
+        checkedList.push(checkBox.checked);
         
-        button.disabled = !checkedList.includes(true);    
-        qtds[index].readOnly = !checkedList.includes(true);
+        quantiBox.readOnly = !checkBox.checked;
+
+        if (quantiBox.readOnly){
+            quantiBox.value = null;
+        }
+
+        button.disabled = !((checkedList.includes(true)) && (quantiBox.value > 0));
+    })
+
+    quantiBox.addEventListener('change', () => {
+        if (!quantiBox.readOnly){
+            button.disabled = !((checkedList.includes(true)) && (quantiBox.value > 0));
+        }
     })
 })
 
@@ -146,6 +163,9 @@ function getBrownies() {
         if (input.checked){
             chks++
             sabores.push(index);
+            setTimeout(() => {
+                console.log(qtds[index].value == 0)
+            }, 1000);
             if (qtds[index].value <= 0){
                 const pError = document.createElement("p")
                 pError.innerHTML = "Quantidade inválida *";
@@ -156,7 +176,7 @@ function getBrownies() {
                 
                 setTimeout(() => {
                     document.querySelectorAll("label")[index+2].removeChild(pError);
-                }, 3500);   
+                }, 3500);
             }else{
                 quantidade = qtds[index].value;
     
