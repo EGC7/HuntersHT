@@ -78,7 +78,7 @@ form{
         & .quantidade{
             border: 3px solid green;
             
-            padding: 7px;
+            padding: 2px;
             color: black;
             background-color: rgba(255, 255, 255, 0.79);
             font-size: 1.0rem;
@@ -86,8 +86,8 @@ form{
         }
 
         & .check{
-            width: 30px;
-            height: 30px;
+            width: 15px;
+            height: 15px;
         }
     }
 
