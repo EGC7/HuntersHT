@@ -1,5 +1,5 @@
 
-async function createPaymentDiv() {
+async function createPaymentDiv(sabores) {
     const paymentDiv = document.createElement("div");
     const title = document.createElement('p');
     const qrCode = document.createElement('div');
@@ -7,7 +7,9 @@ async function createPaymentDiv() {
     const copyButton = document.createElement('button');
     const sendButton = document.createElement('button');
     const cancelButton = document.createElement('button');
-
+    
+    const qtdBrownies = Object.keys(sabores).length;
+    
     sendButton.id = 'sendButton';
     sendButton.innerHTML = 'Já fiz o pagamento';
 
@@ -33,6 +35,8 @@ async function createPaymentDiv() {
     paymentDiv.appendChild(cancelButton);
 
     document.body.appendChild(paymentDiv);
+
+    qtdBrownies > 1 ? alert(`Você precisa efetuar um pagamento de R$${8 * qtdBrownies}.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"`) :  alert("Você precisa efetuar um pagamento de R$9.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"")
 
 }
 

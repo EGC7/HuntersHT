@@ -213,7 +213,7 @@ button.addEventListener("click", (event) => {
     console.log(user);
     
     if(user.name && user.contact && Object.keys(user.brownies).length > 0){
-        createPaymentDiv();
+        createPaymentDiv(user.brownies);
         document.querySelector('#paymentDiv').querySelectorAll('button')[0].addEventListener('click', async () => {
             const texto = document.querySelector('main').innerText;
             navigator.clipboard.writeText(texto).then(() => {
