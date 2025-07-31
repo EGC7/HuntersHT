@@ -12,6 +12,7 @@ async function createPaymentDiv(sabores) {
     
     Object.keys(sabores).forEach(sabor => {
         qtdBrownies += sabores[sabor];
+        console.log(sabores[sabor]);
     });
 
     sendButton.id = 'sendButton';
