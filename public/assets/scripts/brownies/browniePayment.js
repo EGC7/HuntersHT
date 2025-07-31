@@ -36,8 +36,9 @@ async function createPaymentDiv(sabores) {
 
     document.body.appendChild(paymentDiv);
 
-    qtdBrownies > 1 ? alert(`Você precisa efetuar um pagamento de R$${8 * qtdBrownies}.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"`) :  alert("Você precisa efetuar um pagamento de R$9.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"")
-
+    setTimeout(() => {
+        qtdBrownies > 1 ? alert(`Você precisa efetuar um pagamento de R$${8 * qtdBrownies}.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"`) :  alert("Você precisa efetuar um pagamento de R$9.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"")
+    }, 1500);
 }
 
 export { createPaymentDiv }
