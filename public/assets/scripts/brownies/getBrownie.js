@@ -5,7 +5,7 @@ import { createPaymentDiv } from "/assets/scripts/brownies/browniePayment.js";
 
 const onBrownies = await getOnBrownies();
 const browniesSabores = onBrownies[0];
-
+console.log(browniesSabores)
 function showFlavorOnHTML(){
     const rootForm = document.querySelector('form');
     
