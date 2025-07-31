@@ -8,8 +8,12 @@ async function createPaymentDiv(sabores) {
     const sendButton = document.createElement('button');
     const cancelButton = document.createElement('button');
     
-    const qtdBrownies = Object.keys(sabores).length;
+    let qtdBrownies = 0;
     
+    Object.keys(sabores).forEach(sabor => {
+        qtdBrownies += sabores.sabor 
+    });
+
     sendButton.id = 'sendButton';
     sendButton.innerHTML = 'Já fiz o pagamento';
 
@@ -38,7 +42,9 @@ async function createPaymentDiv(sabores) {
 
     setTimeout(() => {
         var msg = '';
-        console.log(sabores);
+        console.log(qtdBrownies);
+        console.log(Object.keys(sabores));
+
         if(qtdBrownies > 1){
             msg = `Você precisa efetuar um pagamento de R$${8 * qtdBrownies}.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"`;
         } else{
