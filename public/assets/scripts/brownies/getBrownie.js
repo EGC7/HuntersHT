@@ -4,7 +4,11 @@ import { sendMessage } from "/assets/scripts/brownies/sendWhatsappMessage.js";
 import { createPaymentDiv } from "/assets/scripts/brownies/browniePayment.js";
 
 const onBrownies = await getOnBrownies();
-const browniesSabores = onBrownies[0];
+let browniesSabores = [];
+onBrownies.forEach(brownie => {
+    browniesSabores.push(brownie[0]) ;
+})
+
 console.log(onBrownies)
 console.log(browniesSabores)
 
