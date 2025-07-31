@@ -38,7 +38,7 @@ async function createPaymentDiv(sabores) {
 
     setTimeout(() => {
         var msg = '';
-        console.log(qtdBrownies);
+        console.log(sabores);
         if(qtdBrownies > 1){
             msg = `Você precisa efetuar um pagamento de R$${8 * qtdBrownies}.00 na chave pix apresentada e depois clicar em \"Já fiz o pagamento\"`;
         } else{

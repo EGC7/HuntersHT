@@ -218,7 +218,8 @@ form{
         color: rgb(221, 35, 2);
         display: flex;
         position: absolute;
-        align-self: flex-end;
+        /* align-self: flex-end; */
+        justify-self: flex-start;
         font-size: 7rem;
         transition: all .2s ease-out;
         background-color: transparent;
