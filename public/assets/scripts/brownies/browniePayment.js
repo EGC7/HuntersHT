@@ -11,7 +11,7 @@ async function createPaymentDiv(sabores) {
     let qtdBrownies = 0;
     
     Object.keys(sabores).forEach(sabor => {
-        qtdBrownies += sabores[sabor];
+        qtdBrownies += parseInt(sabores[sabor]);
         console.log(sabores[sabor]);
     });
 
