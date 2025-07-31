@@ -12,8 +12,8 @@ async function createPaymentDiv() {
     sendButton.innerHTML = 'Já fiz o pagamento';
 
     cancelButton.id = 'cancelButton';
-    cancelButton.innerHTML = 'Cancelar o pagamento';
-    // sendButton.classList.add('Sprite-Grafiti');
+    cancelButton.innerHTML = '&times;';
+    // cancelButton.innerHTML = 'Cancelar o pagamento';
     
     title.innerHTML = 'Efetue o Pagamento com o QrCode abaixo';
     title.classList.add('Sprite-Grafiti');
