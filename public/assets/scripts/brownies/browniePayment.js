@@ -11,7 +11,7 @@ async function createPaymentDiv(sabores) {
     let qtdBrownies = 0;
     
     Object.keys(sabores).forEach(sabor => {
-        qtdBrownies += sabores[sabor]; 
+        qtdBrownies += sabores[sabor];
     });
 
     sendButton.id = 'sendButton';
@@ -40,6 +40,7 @@ async function createPaymentDiv(sabores) {
 
     document.body.appendChild(paymentDiv);
 
+    console.log(qtdBrownies)
     setTimeout(() => {
         var msg = '';
 
