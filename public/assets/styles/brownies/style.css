@@ -216,9 +216,10 @@ form{
 
     & #cancelButton{
         color: rgb(221, 35, 2);
-        display: block;
+        display: flex;
         position: absolute;
-        float: right;
+        align-self: flex-end;
+        justify-content: flex-start;
         font-size: 7rem;
         transition: all .2s ease-out;
         background-color: transparent;
