@@ -84,6 +84,11 @@ form{
             font-size: 1.0rem;
             min-width: 35%;
         }
+
+        & .check{
+            width: 30px;
+            height: 30px;
+        }
     }
 
     & button{
