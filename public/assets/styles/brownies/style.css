@@ -220,7 +220,8 @@ form{
         position: absolute;
         align-self: flex-end;
         justify-content: flex-start;
-        font-size: 7rem;
+        top: 0;
+        font-size: 5rem;
         transition: all .2s ease-out;
         background-color: transparent;
     }
