@@ -9,9 +9,6 @@ onBrownies.forEach(brownie => {
     browniesSabores.push(brownie[0]) ;
 })
 
-console.log(onBrownies)
-console.log(browniesSabores)
-
 function showFlavorOnHTML(){
     const rootForm = document.querySelector('form');
     
