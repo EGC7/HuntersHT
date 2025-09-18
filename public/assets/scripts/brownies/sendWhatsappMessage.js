@@ -28,7 +28,7 @@ function sendMessage(user, contact, sabores, hasPix=false) {
     const URLMessage = encodeURI(message)
 
     
-    var url = `https://wa.me/5591982905641?text=${URLMessage}`;
+    var url = `https://wa.me/5591989694696?text=${URLMessage}`;
     
     window.open(url, '_blank');
     location.reload();
